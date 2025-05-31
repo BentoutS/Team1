@@ -3,189 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABI Team | MCASM</title>
+    <title>Advanced Biomathematics Innovation (ABI) | MCASM</title>
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --light: #ecf0f1;
-            --dark: #1a252f;
+            --primary: #1a5276;  /* Deep science blue */
+            --secondary: #e74c3c; /* Vibrant accent */
+            --accent: #27ae60;   /* Fresh green */
+            --light: #f8f9fa;
+            --dark: #212529;
+            --math-pattern: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
         }
         header {
-            background: var(--primary);
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.95)), var(--math-pattern);
+            background-size: cover;
             color: white;
-            padding: 2rem;
+            padding: 4rem 2rem;
             text-align: center;
-            border-radius: 8px;
             margin-bottom: 2rem;
-        }
-        h1, h2, h3 {
-            color: var(--primary);
+            border-bottom: 5px solid var(--secondary);
         }
         h1 {
-            margin-bottom: 0.5rem;
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .subtitle {
-            color: var(--secondary);
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.9);
             font-weight: 300;
+            margin-top: 0.5rem;
+        }
+        .logo {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 2rem 0;
+            gap: 25px;
+            margin: 3rem 0;
         }
         .member-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.3s;
+            background: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent);
         }
         .member-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         .member-name {
-            font-weight: bold;
+            font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
         }
         .member-role {
             color: var(--secondary);
-            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
         }
         .publications {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .section-title {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
         }
         .pub-item {
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #ddd;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #ddd;
         }
         .pub-title {
-            font-weight: bold;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
         }
         .pub-journal {
-            font-style: italic;
-            color: #555;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        .research-themes {
+            background: linear-gradient(rgba(39, 174, 96, 0.1), rgba(39, 174, 96, 0.05));
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+        .theme-item {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary);
+            border-radius: 0 5px 5px 0;
         }
         footer {
+            background: var(--primary);
+            color: white;
             text-align: center;
+            padding: 2rem;
             margin-top: 3rem;
-            padding: 1rem;
-            color: #777;
-            border-top: 1px solid #eee;
         }
         a {
             color: var(--secondary);
             text-decoration: none;
+            transition: color 0.3s;
         }
         a:hover {
-            text-decoration: underline;
+            color: var(--accent);
+        }
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         }
         @media (max-width: 768px) {
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
+            h1 { font-size: 2rem; }
+            .team-grid { grid-template-columns: 1fr; }
+            .publications, .research-themes { padding: 2rem 1rem; }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Advanced Biomathematics Innovation (ABI)</h1>
-        <p class="subtitle">Multidisciplinary Center for Applied Sciences and Mathematics (MCASM)</p>
+        <div class="container">
+            <div class="logo">MCASM</div>
+            <h1>Advanced Biomathematics Innovation (ABI)</h1>
+            <p class="subtitle">Bridging Mathematical Theory and Biological Complexity</p>
+        </div>
     </header>
 
-    <section>
-        <h2>Team Overview</h2>
-        <p>We pioneer cutting-edge mathematical models for complex biological systems, bridging theory and real-world applications in epidemiology, ecology, and dynamical systems.</p>
-        
-        <h3>Research Focus</h3>
-        <ul>
-            <li>Differential equations (ODE/PDE) & spectral theory</li>
-            <li>Mathematical epidemiology (SIR/SIS models)</li>
-            <li>Ecological modeling & stability analysis</li>
-            <li>Interdisciplinary collaborations with computational biology</li>
-        </ul>
-    </section>
+    <div class="container">
+        <section>
+            <h2 class="section-title">Team Overview</h2>
+            <p>We are an interdisciplinary research team developing <strong>advanced mathematical models</strong> to solve complex problems in epidemiology, ecology, and dynamical systems. Our work combines rigorous theoretical analysis with practical applications to address real-world challenges.</p>
+            
+            <div class="research-themes">
+                <h3 class="section-title">Core Research Themes</h3>
+                <div class="theme-item">
+                    <h4>Dynamical Systems in Biology</h4>
+                    <p>Developing ODE/PDE frameworks for biological processes with applications to disease modeling and population dynamics.</p>
+                </div>
+                <div class="theme-item">
+                    <h4>Fractional Calculus Applications</h4>
+                    <p>Exploring non-local operators for modeling memory effects in ecological and epidemiological systems.</p>
+                </div>
+                <div class="theme-item">
+                    <h4>Stability & Control Theory</h4>
+                    <p>Lyapunov methods and spectral analysis for complex biological networks.</p>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>Team Members</h2>
-        <div class="team-grid">
-            <div class="member-card">
-                <div class="member-name">Bentout Soufiane</div>
-                <div class="member-role">Team Lead | MCA (Assoc. Prof)</div>
-                <p>Specialization: Dynamical Systems</p>
-                <p>Publications: 41 | Citations: 1080 | h-index: 18</p>
-                <a href="https://scholar.google.com/citations?user=mfAJBVcAAAAJ" target="_blank">Google Scholar</a>
+        <section>
+            <h2 class="section-title">Team Members</h2>
+            <div class="team-grid">
+                <div class="member-card">
+                    <div class="member-name">Dr. Bentout Soufiane</div>
+                    <div class="member-role">Team Leader | Associate Professor</div>
+                    <p><strong>Expertise:</strong> Dynamical Systems, Epidemiology</p>
+                    <p><strong>Metrics:</strong> 41 pubs | 1080 citations | h-index 18</p>
+                    <a href="https://scholar.google.com/citations?user=mfAJBVcAAAAJ" target="_blank" class="btn">View Profile</a>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-name">Dr. Djilali Salih</div>
+                    <div class="member-role">Associate Professor</div>
+                    <p><strong>Expertise:</strong> Fractional Calculus</p>
+                    <p><strong>Metrics:</strong> 100+ publications</p>
+                    <a href="https://scholar.google.fr/citations?hl=fr&user=rhjS54wAAAAJ" target="_blank" class="btn">View Profile</a>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-name">Dr. Belattarr Zoukha</div>
+                    <div class="member-role">Associate Professor</div>
+                    <p><strong>Expertise:</strong> Functional Analysis</p>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-name">Dr. Benaissa Abdelkader</div>
+                    <div class="member-role">Assistant Professor</div>
+                    <p><strong>Expertise:</strong> Applied Mathematics</p>
+                </div>
+                
+                <div class="member-card">
+                    <div class="member-name">Dr. Mammar Imane</div>
+                    <div class="member-role">Assistant Professor</div>
+                    <p><strong>Expertise:</strong> Mathematical Biology</p>
+                    <a href="https://scholar.google.fr/citations?user=I0d13d0AAAAJ" target="_blank" class="btn">View Profile</a>
+                </div>
             </div>
-            
-            <div class="member-card">
-                <div class="member-name">Djilali Salih</div>
-                <div class="member-role">MCA</div>
-                <p>Specialization: Fractional Calculus</p>
-                <p>Publications: 100</p>
-                <a href="https://scholar.google.fr/citations?hl=fr&user=rhjS54wAAAAJ" target="_blank">Google Scholar</a>
-            </div>
-            
-            <div class="member-card">
-                <div class="member-name">Belattarr Zoukha</div>
-                <div class="member-role">MCA</div>
-                <p>Specialization: Functional Analysis</p>
-            </div>
-            
-            <div class="member-card">
-                <div class="member-name">Benaissa Abdelkader</div>
-                <div class="member-role">MCB</div>
-                <p>Specialization: Applied Mathematics</p>
-            </div>
-            
-            <div class="member-card">
-                <div class="member-name">Mammar Imane</div>
-                <div class="member-role">MCB</div>
-                <p>Specialization: Mathematical Biology</p>
-                <p>Publications: 2 | Citations: 2 | h-index: 1</p>
-                <a href="https://scholar.google.fr/citations?user=I0d13d0AAAAJ" target="_blank">Google Scholar</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="publications">
-        <h2>Research Highlights</h2>
-        
-        <div class="pub-item">
-            <div class="pub-title">Turing-Hopf Bifurcation in Fractional Mussel-Algae Models</div>
-            <div class="pub-journal">Chaos, Solitons & Fractals (2020)</div>
-            <p>Djilali, S., Ghanbari, B., Bentout, S., & Mezouaghi, A.</p>
-        </div>
-        
-        <div class="pub-item">
-            <div class="pub-title">Age-Structured COVID-19 Modeling for USA/UAE/Algeria</div>
-            <div class="pub-journal">Alexandria Engineering Journal (2021)</div>
-            <p>Bentout, S., Tridane, A., Djilali, S., & Touaoula, T. M.</p>
-        </div>
-        
-        <div class="pub-item">
-            <div class="pub-title">Global Dynamics of SEIR Models with Nonlinear Incidence</div>
-            <div class="pub-journal">Acta Applicandae Mathematicae (2021)</div>
-            <p>Bentout, S., Chen, Y., & Djilali, S.</p>
-        </div>
-    </section>
+        <section class="publications">
+            <h2 class="section-title">Research Highlights</h2>
+            
+            <div class="pub-item">
+                <div class="pub-title">Turing-Hopf Bifurcation in Fractional Mussel-Algae Models</div>
+                <div class="pub-journal">Chaos, Solitons & Fractals (2020)</div>
+                <p>Djilali, S., Ghanbari, B., Bentout, S., & Mezouaghi, A.</p>
+                <a href="#" class="btn">Read Paper</a>
+            </div>
+            
+            <div class="pub-item">
+                <div class="pub-title">Age-Structured COVID-19 Modeling for USA/UAE/Algeria</div>
+                <div class="pub-journal">Alexandria Engineering Journal (2021)</div>
+                <p>Bentout, S., Tridane, A., Djilali, S., & Touaoula, T. M.</p>
+                <a href="#" class="btn">Read Paper</a>
+            </div>
+            
+            <div class="pub-item">
+                <div class="pub-title">Global Dynamics of SEIR Models with Nonlinear Incidence</div>
+                <div class="pub-journal">Acta Applicandae Mathematicae (2021)</div>
+                <p>Bentout, S., Chen, Y., & Djilali, S.</p>
+                <a href="#" class="btn">Read Paper</a>
+            </div>
+        </section>
+    </div>
 
     <footer>
-        <p>© 2023 Advanced Biomathematics Innovation Team | MCASM</p>
-        <p>Contact: <a href="mailto:team@abi-mcasm.edu">team@abi-mcasm.edu</a></p>
+        <div class="container">
+            <h3>Advanced Biomathematics Innovation (ABI)</h3>
+            <p>Multidisciplinary Center for Applied Sciences and Mathematics (MCASM)</p>
+            <p>Contact: <a href="mailto:abi@mcasm.edu" style="color: white;">abi@mcasm.edu</a></p>
+            <p>© 2023 All Rights Reserved</p>
+        </div>
     </footer>
 </body>
 </html>
